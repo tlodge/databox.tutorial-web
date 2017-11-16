@@ -1,0 +1,77 @@
+[
+    {
+        "id": "f13bf987.7f85b8",
+        "label": "new package",
+        "type": "tab"
+    },
+    {
+        "id": "36d329e3.435276",
+        "type": "webify",
+        "z": "f13bf987.7f85b8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<style>\n    \n    h1 {\n        font-family: \"Avant Garde\", Avantgarde, \"Century Gothic\", CenturyGothic, \"AppleGothic\", sans-serif;\n        font-size: 92px;\n        padding: 80px 50px;\n        text-align: center;\n        text-transform: uppercase;\n        text-rendering: optimizeLegibility;\n   }\n  \n   .elegantshadow {\n    color: #131313;\n    background-color: #e7e5e4;\n    letter-spacing: .15em;\n    text-shadow: \n      1px -1px 0 #767676, \n      -1px 2px 1px #737272, \n      -2px 4px 1px #767474, \n      -3px 6px 1px #787777, \n      -4px 8px 1px #7b7a7a, \n      -5px 10px 1px #7f7d7d, \n      -6px 12px 1px #828181, \n      -7px 14px 1px #868585, \n      -8px 16px 1px #8b8a89, \n      -9px 18px 1px #8f8e8d, \n      -10px 20px 1px #949392, \n      -11px 22px 1px #999897, \n      -12px 24px 1px #9e9c9c, \n      -13px 26px 1px #a3a1a1, \n      -14px 28px 1px #a8a6a6, \n      -15px 30px 1px #adabab, \n      -16px 32px 1px #b2b1b0, \n      -17px 34px 1px #b7b6b5, \n      -18px 36px 1px #bcbbba, \n      -19px 38px 1px #c1bfbf, \n      -20px 40px 1px #c6c4c4, \n      -21px 42px 1px #cbc9c8, \n      -22px 44px 1px #cfcdcd, \n      -23px 46px 1px #d4d2d1, \n      -24px 48px 1px #d8d6d5, \n      -25px 50px 1px #dbdad9, \n      -26px 52px 1px #dfdddc, \n      -27px 54px 1px #e2e0df, \n      -28px 56px 1px #e4e3e2;\n  }\n</style>\n<h1 class=\"elegantshadow\">{{payload.value}}</h1>\n",
+        "x": 415,
+        "y": 330,
+        "wires": [
+            [
+                "29d10aad.61c1d6"
+            ]
+        ]
+    },
+    {
+        "id": "29d10aad.61c1d6",
+        "type": "app",
+        "z": "f13bf987.7f85b8",
+        "name": "",
+        "appId": "webapp",
+        "layout": null,
+        "x": 535,
+        "y": 313,
+        "wires": []
+    },
+    {
+        "id": "6568266d.0d9e28",
+        "type": "twitter",
+        "z": "f13bf987.7f85b8",
+        "name": "",
+        "subtype": "twitterHashTagStream",
+        "x": 112,
+        "y": 321,
+        "wires": [
+            [
+                "9b9daab5.8794f8"
+            ]
+        ]
+    },
+    {
+        "id": "9b9daab5.8794f8",
+        "type": "extract",
+        "z": "f13bf987.7f85b8",
+        "name": "",
+        "filters": [
+            {
+                "source": "twitter",
+                "item": {
+                    "type": "string",
+                    "description": "a tweet",
+                    "name": "value"
+                },
+                "path": [
+                    "payload",
+                    "value"
+                ]
+            }
+        ],
+        "x": 234,
+        "y": 324,
+        "wires": [
+            [
+                "36d329e3.435276"
+            ]
+        ]
+    }
+]
